@@ -1,0 +1,32 @@
+{
+  "tolerance": 0.02,
+  "retriever": "hybrid",
+  "prompts": {
+    "v1": {
+      "fingerprint": "3c6e8e159cca69faf7a1b43b4dd8c829be59bcf30cf4b155f80217c455a84af9",
+      "metrics": {
+        "citation_rate": 0.9722,
+        "claim_support": 0.9722,
+        "grounded_rate": 0.9722,
+        "keyword_recall": 0.6775,
+        "false_refusal_rate": 0.0278,
+        "oos_refusal_rate": 0.9286,
+        "recall@3": 0.9722,
+        "mrr": 0.917
+      }
+    },
+    "v2": {
+      "fingerprint": "e3e2e3576048de7dcc56574f785a7df3fc1905025d90b8b889b03d9ef9a4d62c",
+      "metrics": {
+        "citation_rate": 0.9537,
+        "claim_support": 0.9537,
+        "grounded_rate": 0.9537,
+        "keyword_recall": 0.6034,
+        "false_refusal_rate": 0.0463,
+        "oos_refusal_rate": 0.9286,
+        "recall@3": 0.9722,
+        "mrr": 0.917
+      }
+    }
+  }
+}

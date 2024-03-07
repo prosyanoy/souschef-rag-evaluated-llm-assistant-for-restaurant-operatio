@@ -1,0 +1,27 @@
+# `docker compose up --build` starts the API (:8000) and the Streamlit UI (:8501) with the offline stub LLM.
+# To use a real local model: `docker compose --profile llm up` and set SOUSCHEF_LLM_BACKEND=ollama in .env
+# (then `docker compose exec ollama ollama pull llama3.2:1b`).
+services:
+  api:
+    build: .
+    ports: ["8000:8000"]
+    env_file: [{path: .env, required: false}]
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    volumes: ["souschef-data:/app/.cache"]
+  ui:
+    build: .
+    command: ["streamlit", "run", "app/streamlit_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+    ports: ["8501:8501"]
+    env_file: [{path: .env, required: false}]
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    volumes: ["souschef-data:/app/.cache"]
+  ollama:
+    image: ollama/ollama:latest
+    profiles: ["llm"]
+    ports: ["11434:11434"]
+    volumes: ["ollama-models:/root/.ollama"]
+volumes:
+  souschef-data:
+  ollama-models:
